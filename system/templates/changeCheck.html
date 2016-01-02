@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<form action="" method="post">
+	<h3>员工ID:{{ check.info.user.username }}</h3>
+	<br />
+	<h3>姓名：{{ check.info.name }}</h3>
+	<label for="date">日期:</label>
+	<input id="date" type="text" name="date" value="{{ check.date | date:"Y-m-d"}}">
+	<label for="late">是否迟到：</label>
+    <input id="late" type="radio" name="late" value="1">是
+    <input id="late" type="radio" name="late" value="0">否
+    <input type="submit" value="确定">
+</form>
+
+{% endblock %}

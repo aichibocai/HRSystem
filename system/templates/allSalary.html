@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% block content %}
+<form action="" method="post">
+	<select name="department">
+	{% for d in departments %}
+	<option value="{{ d }}">{{ d }}</option>
+	{% endfor %}
+	<option value="all" selected="selected">全部</option>
+	</select>
+	
+	<select name="persons">
+	{% for p in persons %}
+	<option value="{{ p }}">{{ p }}</option>
+	{% endfor %}
+	<option value="all" selected="selected">全部</option>
+	</select>
+	
+	{% if salarys %}
+	<table border='1'>
+			<tr>
+				<th colspan="2">姓名</th>
+				<th colspan="2">ID</th>
+				<th colspan="2">部门</th>
+				<th colspan="2">日期</th>
+				<th colspan="2">薪资</th>
+				
+			</tr>
+			{% for s in salarys %}
+			<tr>
+				<td colspan="2">{{ s.info.name }}</td>
+				<td colspan="2">{{ s.info.user.username }}</td>
+				<td colspan="2">{{ s.info.department }}</td>
+				<td colspan="2">{{ s.date }}</td>
+				<td colspan="2">{{ s.salary }}</td>
+				
+			</tr>
+			{% endfor %}
+	</table>
+	{% else %}
+	<h5>记录为空</h5>
+	{% endif %}
+	<input type="submit" value="查询">
+</form>
+{% endblock %}

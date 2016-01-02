@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% block content %}
+
+
+<h2>{{ year }}年{{ month }}月薪资信息：</h2>
+	<form action="/calculateSal/" method="post">
+		{% if messages %}
+		<table border='1'>
+			<tr>
+				<th colspan="2">姓名</th>
+				<th colspan="2">ID</th>
+				<th colspan="2">本月薪资</th>
+				<th colspan="2">缺勤次数</th>
+				<th colspan="2">缺勤日期</th>
+			</tr>
+			{% for i in messages %}
+			<tr>
+				<td colspan="2">{{ i.info.name }}</td>
+				<td colspan="2">{{ i.info.user.username }}</td>
+				<td colspan="2">{{ i.salary }}</td>
+				<td colspan="2">{{ i.count }}</td>
+				<td colspan="2">{% for s in i.late %} {{ s.date }} {% endfor %}</td>
+			
+			</tr>
+			{% endfor %}
+		</table>
+		<input type="hidden" name="date" value="{{ year }}-{{ month }}-01">
+		<input type="submit" value="结算本月薪资">
+		{% else %}
+				<h5>记录为空</h5>
+		{% endif %}
+	</form>
+
+
+
+			
+
+{% endblock %}

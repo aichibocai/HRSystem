@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	
+		<h2>员工列表</h2>
+		
+		<form action="" method="post">
+			{% if infos %}
+				<table>
+					<tr>
+						<th colspan="2">选取</th>
+						<th colspan="2">Colleague Name</th>
+						<th colspan="2">Colleague ID</th>
+						<th colspan="2">E-mail</th>
+						<th colspan="2">修改</th>
+					</tr>
+					{% for i in infos %}
+					<tr>
+						<td colspan="2"><input type="radio" name="id" value="{{i.id}}"></td>
+						<td colspan="2">{{ i.name }}</td>
+						<td colspan="2">{{ i.user.username }}</td>
+						<td colspan="2">{{ i.user.email }}</td>
+						<td colspan="2"><a href="/changeInfo/{{ i.id }}/">修改</a></td>
+			
+					</tr>
+					{% endfor %}
+				</table>
+				<input type="submit" value="删除该员工">
+			{% else %}
+				<h5>记录为空</h5>
+			{% endif %}
+				
+				
+			
+		</form>
+
+	
+		
+	
+
+{% endblock %}

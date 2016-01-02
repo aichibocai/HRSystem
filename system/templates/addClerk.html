@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="/addClerk/" method="post"> {% csrf_token %}
+		<ul>
+    	<br />
+    	<br />
+    		
+    		<li>
+				<h4>Name：</h4><input type="text" name="name"  ><br />
+			</li>
+			<li>
+				<h4>Sex：</h4>
+				<input  type="radio" name="sex" value="男" checked>男
+    			<input  type="radio" name="sex" value="女">女
+			</li>
+			<li>
+				<h4>Birth：</h4>
+				<select name="year">
+				{% for y in years %}
+				<option value="{{ y }}">{{ y }}</option>
+				{% endfor %}
+				</select>
+				年
+	
+				<select name="month">
+				{% for m in months %}
+				<option value="{{ m }}">{{ m }}</option>
+				{% endfor %}
+				</select>
+				月
+	
+	
+				<select name="date">
+				{% for d in dates %}
+				<option value="{{ d }}">{{ d }}</option>
+				{% endfor %}
+				</select>
+				日
+			</li>
+			<li>
+				<h4>E-mail：</h4><input type="email" name="email" ><br />
+			</li>
+			<li>
+				<h4>Department:</h4> 
+				<select name="department">
+				{% for d in departments %}
+				<option value="{{ d }}">{{ d }}</option>
+				{% endfor %}
+				</select>
+			</li>
+			
+			<li>
+				<h4>Base Salary:</h4> <input type="number" name="bSalary"  ><br />
+			</li>
+			<li>
+				<h4>Post:</h4> 
+				<select name="post">
+				{% for p in posts %}
+				<option value="{{ p }}">{{ p }}</option>
+				{% endfor %}
+				</select>
+			</li>
+			
+		</ul>
+		<input type = "submit" value = "确认">
+	</form>
+
+{% endblock %}

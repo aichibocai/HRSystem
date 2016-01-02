@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block content %}
+<form action = "" method = "post">
+	<h2>本月薪资：</h2>
+			<table  border='1'>
+			<tr>
+				<th colspan="2">日期</th>
+				<th colspan="2">薪资</th>
+				<th colspan="2">缺勤次数</th>
+				<th colspan="2">缺勤日期</th>
+			</tr>
+			<tr>
+				<td colspan="2">{{ year }}年{{ month }}月</td>
+				<td colspan="2">{{ salary }}</td>
+				<td colspan="2">{{ counts }}</td>
+				<td colspan="2">{% for i in lates %} {{ i.date }} {% endfor %}</td>
+			
+			</tr>
+			</table>
+			<input type="submit" value="打印">
+</form>		
+{% endblock %}	

@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{% block content %}
+
+	
+		<style type="text/css"> 
+			#login{ 
+					position:absolute; 
+					top:20%; 
+					left:29%; 
+					margin-left:-标签一半宽度; 
+margin-top:-标签一半高度; 
+} 
+</style> 
+<br />
+<br />
+<br />
+<br />
+<p align="center"><font size="4" color="#FF0000">{{ error }}</font></p>
+<div class="about-text" id="login">
+                            <form action="/changePass/" method="post" "contact-from">
+                     			<label for="password">New Password</label>
+                                <input type="password" name="pass" id="password" placeholder="新密码：">
+                                 </br>
+                     			<label for="againpassword">Once again</label>
+                                <input type="password" name="password" id="againpassword" placeholder="密码确认：">
+                                 </br>
+                                
+                                <button class="send">确认提交</button>
+                            </form>
+</div>
+
+<style type="text/css"> 
+#login2{ 
+position:absolute; 
+top:18%; 
+left:19%; 
+margin-left:-标签一半宽度; 
+} 
+</style> 
+
+
+		
+
+	
+	
+		
+
+	
+	
+	
+
+{% endblock %}
+

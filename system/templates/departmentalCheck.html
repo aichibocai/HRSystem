@@ -1,0 +1,93 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<form action="" method="post">
+</br>
+	<h3>Beginning time</h3>
+	
+	<select name="byear">
+	{% for y in years %}
+	<option value="{{ y }}">{{ y }}</option>
+	{% endfor %}
+	</select>
+	年
+	
+	<select name="bmonth">
+	{% for m in months %}
+	<option value="{{ m }}">{{ m }}</option>
+	{% endfor %}
+	</select>
+	月
+	
+	
+	<select name="bdate">
+	{% for d in dates %}
+	<option value="{{ d }}">{{ d }}</option>
+	{% endfor %}
+	</select>
+	日
+	<br />
+	<h3>Ending    time</h3>
+	
+	<select name="eyear">
+	{% for y in years %}
+	<option value="{{ y }}">{{ y }}</option>
+	{% endfor %}
+	</select>
+	年
+	<select name="emonth">
+	{% for m in months %}
+	<option value="{{ m }}">{{ m }}</option>
+	{% endfor %}
+	</select>
+	月
+	<select name="edate">
+	{% for d in dates %}
+	<option value="{{ d }}">{{ d }}</option>
+	{% endfor %}
+	</select>
+	日
+	<br />  
+	<input type="Submit" value="按时间查询">
+</form>
+<form action="/deleteCheck/" method="post">
+<h2>部门员工缺勤信息：</h2>
+<br />
+{% if checks %}
+<p>共有{{ number }}人缺勤</p>
+		<table border='1'>
+			<tr>
+				<th colspan="2">选取</th>
+				<th colspan="2">姓名</th>
+				<th colspan="2">ID</th>
+				<th colspan="2">缺勤次数</th>
+				<th colspan="2">缺勤日期</th>
+				
+				<th colspan="2">修改</th>
+			</tr>
+			{% for check in checks %}
+			
+			
+			
+			{% for c in check %}
+			<tr>
+				<td colspan="2"><input type="radio" name="id" value="{{ c.id }}"></td>
+				<td colspan="2">{{ c.info.name }}</td>
+				<td colspan="2">{{ c.info.user.username }}</td>
+				<td colspan="2">{{ check|length }}</td>
+				<td colspan="2">{{ c.date | date:"Y-m-d"}}</td>
+				
+				<td colspan="2"><a href="/changeCheck/{{ c.id }}/">修改信息</a></td>
+			
+			</tr>
+			{% endfor %}
+			{% endfor %}
+		</table>
+		<input type="submit" value="删除">
+{% else %}
+	<h5>记录为空</h5>
+{% endif %}
+</form>
+
+
+{% endblock %}

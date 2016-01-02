@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if infos %}
+<table border='1'>
+			<tr>
+				<th colspan="2">Colleague Name</th>
+				<th colspan="2">Cplleague ID</th>
+				<th colspan="2">Post</th>
+				<th colspan="2">E-mail</th>
+				<th colspan="2">Sex</th>
+				<th colspan="2">Birth</th>
+				{% if perms.system.update_salary %}
+					<th colspan="2">Base Salary</th>
+				{% endif %}
+				
+			</tr>
+			
+			<tr>
+			
+				<td colspan="2">{{ infos.name }}</td>
+				<td colspan="2">{{ infos.user.username }}</td>
+				<td colspan="2">{{ infos.post }}</td>
+				<td colspan="2">{{ infos.user.email }}</td>
+				<td colspan="2">{{ infos.sex }}</td>
+				<td colspan="2">{{ infos.birth | date:'Y-m-d'}}</td>
+				{% if perms.system.update_salary %}
+					<td colspan="2">{{ infos.bSalary }}</td>
+				{% endif %}
+			
+			</tr>
+			
+		</table>
+{% else %}
+	<h5>无匹配结果</h5>
+{% endif %}
+
+{% endblock %}

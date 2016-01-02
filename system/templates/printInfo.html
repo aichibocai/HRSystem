@@ -1,0 +1,86 @@
+{% extends 'base.html'%}
+{% block content %}
+
+</br>
+</br>
+<style type="text/css">
+#customers
+  {
+  	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  	width:90%;
+  	border-collapse:collapse;
+  }
+
+#customers td, #customers th 
+  {
+  	font-size:1em;
+    text-align:center;
+  	border:1px solid ffffff;
+  	padding:2px 7px 2px 4px;
+  }
+
+#customers th 
+  {
+  	font-size:1.1em;
+  	text-align:center;
+  	padding-top:5px;
+  	padding-bottom:4px;
+  	background-color:ff0000;
+  	
+  }
+
+#customers tr.alt td 
+  {
+  	
+  	text-align:center;
+  	background-color:#ff0000;
+  }
+</style>
+
+	<table id="customers"  border='1'>
+		<tr>
+			<th>Name</th>
+			<td>{{ info.name }}</td>
+			<th>Client ID</th>
+			<td>{{ user.username }}</td>
+			<th>Initial PSW</th>
+			<td>12345</td>
+		</tr>
+
+		<tr>
+			
+			<th>Department</th>
+			<td>{{ info.department }}</td>
+			<th>E-mail</th>
+			<td>company@mail.com</td>
+
+		</tr>
+
+	
+		
+		<tr>
+			<td colspan="6">    </td>
+		</tr>
+
+		<tr>
+			<th colspan="2">Colleague Name</th>
+			<th colspan="2">Cplleague ID</th>
+			<th colspan="2">E-mail</th>
+		</tr>
+		{% for colleague in colleagues %}
+		<tr>
+			<td colspan="2">{{ colleague.name }} </td>
+			<td colspan="2">{{ colleague.user.username }} </td>
+			<td colspan="2">{{ colleague.user.email }}</td>
+		</tr>
+		{% endfor %}
+		
+
+	</table>
+	
+	<button>打印</button>
+
+
+
+
+{% endblock %}

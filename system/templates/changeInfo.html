@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form action="/changeInfo/{{ clerk.id }}/" method="post"> {% csrf_token %}
+		<ul>
+    	<br />
+    	<br />
+    		
+    		<li>
+				<h4>Name：</h4><input type="text" name="name" value="{{ clerk.name }}" ><br />
+			</li>
+			<li>
+				<h4>Sex：</h4><input type="text" name="sex" value="{{ clerk.sex }}" ><br />
+				
+			</li>
+			<li>
+				<h4>Birth：</h4><input type="text" name="birth"  value="{{ clerk.birth | date:'Y-m-d' }}" ><br />
+			</li>
+		
+			<li>
+				<h4>E-mail：</h4><input type="email" name="email" value="{{ clerk.user.email }}"><br />
+			</li>
+			<li>
+				<h4>Department:</h4> 
+				<select name="department">
+				{% for d in departments %}
+				<option value="{{ d }}">{{ d }}</option>
+				{% endfor %}
+				<option value="all" selected="{{ clerk.department}}">{{ clerk.department}}</option>
+				</select>
+				<br />
+			</li>
+			<li>
+				<h4>Post:</h4> <input type="text" name="post" value="{{ clerk.post }}"> <br />
+			</li>
+			{% if perms.system.update_salary %}
+			<li>
+				<h4>Base Salary:</h4> <input type="number" name="bSalary"  value="{{ clerk.bSalary }}"><br />
+			</li>
+			{% else %}
+			<li><input type="hidden" name="bSalary" value="{{ clerk.bSalary }}"></li>
+			{% endif %}
+			
+		</ul>
+		<input type = "submit" value = "确认">
+	</form>
+
+{% endblock %}

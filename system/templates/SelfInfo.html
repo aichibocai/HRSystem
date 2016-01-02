@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% block content %}
+
+	<form action="" method="post"> {% csrf_token %}
+		<ul>
+    	<br />
+    	<br />
+    		<li>
+    			<h4>ID: {{ user.user.username }}</h4>
+			</li>
+    		<li>
+				<h4>Name：</h4>{{ user.name }}
+			</li>
+			<li>
+				<h4>E-mail：</h4><input type="email" name="email" value="{{ user.user.email }}" id="email"><br />
+			</li>
+			<li>
+				<h4>Birth:</h4> {{ user.birth | date:'Y-m-d'}}
+			</li>
+			<li>
+				<h4>Department:</h4> {{ user.department.dno }}
+			</li>
+			<li>
+				<h4>Manager:</h4> {{ user.department.manager }}
+			</li>
+			<li>
+				<h4>Base Salary:</h4> {{ user.bSalary }}
+			</li>
+			<li>
+				<h4>Post:</h4> {{ user.post }}
+			</li>
+			
+		</ul>
+		<input type = "submit" value = "确认修改">
+	</form>
+ 
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<h2>部门员工薪资信息：</h2>
+	{% if salarys %}
+		<table border='1'>
+			<tr>
+				<th colspan="2">姓名</th>
+				<th colspan="2">ID</th>
+				<th colspan="2">日期</th>
+				<th colspan="2">薪资</th>
+			</tr>
+			{% for s in salarys %}
+				{% for i in s %}
+				<tr>
+					<td colspan="2">{{ i.info.name }}</td>
+					<td colspan="2">{{ i.info.user.username }}</td>
+					<td colspan="2">{{ i.date | date:'Y年m月' }}</td>
+					<td colspan="2">{{ i.salary }}</td>
+			
+				</tr>
+				{% endfor %}
+			{% endfor %}
+		</table>
+	{% else %}
+		<h5>记录为空</h5>
+	{% endif %}
+{% endblock %}

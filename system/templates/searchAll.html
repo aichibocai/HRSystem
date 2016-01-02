@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<form action="/searchAll/" method = "post">
+		<input type="text" name="text" placeholder="Search here..."/>
+		<button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+		<select name="choices" >
+				
+			<option value="name">姓名</option>
+			<option value="id">ID</option>
+			
+				
+		</select>
+</form>
+
+		{% if infos %}
+		<table border='1'>
+			<tr>
+				<th colspan="2">Colleague Name</th>
+				<th colspan="2">Cplleague ID</th>
+				<th colspan="2">Post</th>
+				<th colspan="2">E-mail</th>
+				<th colspan="2">Sex</th>
+				
+			</tr>
+			{% for i in infos %}
+			<tr>
+			
+				<td colspan="2">{{ i.name }}</td>
+				<td colspan="2">{{ i.user.username }}</td>
+				<td colspan="2">{{ i.post }}</td>
+				<td colspan="2">{{ i.user.email }}</td>
+				<td colspan="2">{{ i.sex }}</td>
+			
+			</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+			<h5>记录为空</h5>
+		{% endif %}
+	
+
+
+{% endblock %}

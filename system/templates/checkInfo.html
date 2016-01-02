@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form action="" method="post">
+</br>
+	
+	<h3>Beginning time</h3>
+	
+	<select name="byear">
+	{% for y in years %}
+	<option value="{{ y }}">{{ y }}</option>
+	{% endfor %}
+	</select>
+	年
+	
+	<select name="bmonth">
+	{% for m in months %}
+	<option value="{{ m }}">{{ m }}</option>
+	{% endfor %}
+	</select>
+	月
+	
+	
+	<select name="bdate">
+	{% for d in dates %}
+	<option value="{{ d }}">{{ d }}</option>
+	{% endfor %}
+	</select>
+	日
+	<br />
+	<h3>Ending    time</h3>
+	
+	<select name="eyear">
+	{% for y in years %}
+	<option value="{{ y }}">{{ y }}</option>
+	{% endfor %}
+	</select>
+	年
+	<select name="emonth">
+	{% for m in months %}
+	<option value="{{ m }}">{{ m }}</option>
+	{% endfor %}
+	</select>
+	月
+	<select name="edate">
+	{% for d in dates %}
+	<option value="{{ d }}">{{ d }}</option>
+	{% endfor %}
+	</select>
+	日
+	<br />   
+	
+	
+	<input type="Submit" value="按时间查询">
+	
+</form>
+
+<h4>历史缺勤记录：</h4>
+	{% if lates %}
+		<table border='1'>
+			<tr>
+				<th colspan="2">缺勤日期：</th>
+			</tr>
+			{% for l in lates %}
+			<tr>
+				<td colspan="2">{{ l.date }}</td>
+			</tr>
+			{% endfor %}
+			
+		</table>
+	{% else %}
+		<h5>记录为空</h5>
+	{% endif %}
+		
+
+{% endblock %}
